@@ -1,7 +1,7 @@
 ## Usage
-### ./git_folder_update \<git home\>
+### ./git_folder_autoupdate \<git home\>
 ```
-lauea:git lauea$ ./git_folder_update /home/lauea/github/
+lauea:git lauea$ ./git_folder_autoupdate /home/lauea/github/
 ########### GIT  community-catalog  ##############
 Path:  /home/lauea/github/community-catalog
 On branch  master 
