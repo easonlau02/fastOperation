@@ -1,0 +1,36 @@
+#!/bin/bash
+
+source ./var.ini
+
+# a key which can identify the only deployment
+dep_key=$1
+# a key which can identify the vm type under specific deployment
+vm_key=$2
+
+# get your alias, please set your alias via `bosh alias-env <name> <ip>`
+# will auto get your first env
+env=$(bosh envs | awk 'NR=1 {print $2}')
+deployment=$(bosh -e $env deps |awk '/^[a-zA-Z]/ {print $1}' | awk "/${dep_key}/ {print}" | awk 'END {print $1}')
+vm_type=$(bosh -e $env -d $deployment vms | awk "/${vm_key}/ {print}" | awk 'END {print $1}')
+
+echo "========================================="
+echo -e "ENV : $b$env$e"
+echo -e "Deployment : $b$deployment$e"
+echo -e "VM Type : $b$vm_type$e"
+echo -e "Dep Key : $b$dep_key$e"
+echo -e "VM Type Key : $b$vm_key$e"
+echo "========================================="
+
+invalid(){
+        echo -e $b"Cannot fetch deployment or VM Type or VM Type key.$e"
+        echo -e "Usage : $b$0 <deployment key> <VM Type Key>$e"
+}
+go() {
+        if [[ -n $dep_key && -n $vm_key && -n $deployment && -n $vm_type ]]; then
+                bosh -e $env -d $deployment ssh $vm_type
+        else
+                invalid $@
+        fi
+}
+
+go $@
