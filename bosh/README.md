@@ -1,4 +1,4 @@
-### ./go_vm <deployment key> <VM Type key>
+### ./go_vm \<deployment key\> \<VM Type key\>
 ```
 ubuntu@ops-manager:~/bosh$ ./go_vm depl1 vm1 
 =====Going to vm1=======
