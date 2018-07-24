@@ -1,3 +1,4 @@
+## Usage
 ### ./go_vm \<deployment key\> \<VM Type key\>
 ```
 ubuntu@ops-manager:~/bosh$ ./go_vm depl1 vm1 
