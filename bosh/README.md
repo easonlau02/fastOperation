@@ -32,6 +32,6 @@ Last login: Tue Jul 24 08:45:32 2018 from 172.16.170.4
 To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 
-isolated_diego_cell_vm1/isolated_diego_cell_vm1/ede11472-221e-4dc4-9e61-daawer232323:~$ 
+isolated_diego_cell_vm1/ede11472-221e-4dc4-9e61-daawer232323:~$ 
 
 ```
