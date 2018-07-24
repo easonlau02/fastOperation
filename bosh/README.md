@@ -28,7 +28,7 @@ individual files in /usr/share/doc/*/copyright.
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
-Last login: Tue Jul 24 08:45:32 2018 from 172.16.170.4
+Last login: Tue Jul 24 08:45:32 2018 from xx.xx.xx.xx
 To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 
