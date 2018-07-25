@@ -69,3 +69,4 @@ See "man sudo_root" for details.
 vm1-testing-prod-gr/f3ae934f-b421-4c59-89f3-fdfsdfsf223d:~$ 
 
 ```
+4. yes, till now, you go into the vm which deployment name includes key `dep1` AND vm type includes key `vm1`.
