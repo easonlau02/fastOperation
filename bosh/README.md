@@ -1,6 +1,6 @@
 ## Usage
 
-* Get depployment key based on deps list, run `./deps_list`
+1. Get depployment key based on deps list, run `./deps_list`
 ```
 lauea@ops-manager:~/bosh$ ./deps_list 
 ENV : nonprod
@@ -13,7 +13,7 @@ ENV : nonprod
 7 : p-healthwatch-asfsdfsadf2323
 8 : p-dep1-11b89851fe75b1173dd2
 ```
-* Confirm the deploment key and then check the vm type key, eg: dep_key=dep1, run `./vmlist_for_onedep dep1`
+2. Confirm the deploment key and then check the vm type key, eg: dep_key=dep1, run `./vmlist_for_onedep dep1`
 ```
 lauea@ops-manager:~/bosh$ ./vmlist_for_onedep metrics
 ENV : prod
@@ -33,7 +33,7 @@ vm2test/6e495605-9088-4de9-be29-523223232323              running        null  x
 
 Succeeded
 ```
-* Now you have depoyment key and vm type key, eg: dep_key=dep1,vm_key=vm1, run `./go_vm dep1 vm1`
+3. Now you have depoyment key and vm type key, eg: dep_key=dep1,vm_key=vm1, run `./go_vm dep1 vm1`
 ```
 ubuntu@ops-manager:~/bosh$ ./go_vm depl1 vm1 
 =====Going to vm1=======
