@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source ./var.ini
+
+dep_key=$1
+env=$(bosh envs | awk 'NR=1 {print $2}')
+deployment=$(bosh -e $env deps | awk '/^[a-zA-Z]/ {print $1}' | awk "/$dep_key/ {print}" | awk 'END {print $1}')
+
+if [[ -n $dep_key && -n $env && -n $deployment ]]; then
+	echo -e "ENV : $b$env$e"
+	echo -e "Dep Key : $b$dep_key$e"
+	echo -e "Deployment : $b$deployment$e"
+	bosh -e $env -d $deployment vms
+else
+	echo -e "Usage : $b$0 <deployment key>$e"
+fi
