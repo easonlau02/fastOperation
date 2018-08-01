@@ -1,0 +1,64 @@
+#!/bin/bash
+
+source ./var.ini
+
+manifest=$1
+varsStore=$2
+env=$(bosh envs | awk '{print $2}')
+
+invalid(){
+        echo -e "Usage: $b$0 [mongo_manifest file] [vars_store_path] $e"
+        exit
+}
+
+go(){
+        if [[ -n $manifest && -n $varsStore ]]; then
+                deployment_name=$(awk '/name:/ && NR <=2 {print $2}' $manifest)
+                instances=$(awk '/instances/ {print $2}' $manifest)
+                single=true
+                if [[ $instances > 2 ]]; then
+                        single=2
+                else
+                        single=1
+                fi
+        else
+                invalid
+        fi
+        if [[ -z $env ]]; then
+                echo -e "$b No env found! $e"
+                exit
+        fi
+        if [[ -z $instances ]]; then
+                echo -e "$b Manifest error! $e"
+                exit
+        fi
+        while [[ $input != "yes" && $input != "no" ]];
+        do
+                echo "======================================="
+                echo -e "Environment : " $b$env$e
+                echo -e "Deployment Name : " $b$deployment_name$e
+                if [[ $single == 1 ]]; then
+                        echo -e "Mode : $b Single Node $e"
+                elif [[ $single == 2 ]]; then
+                        echo -e "Mode : $b $instances Replcat Node $e"
+                fi
+                echo Ready to deploy"?[yes|no]"
+                read -p "[yes|no]:" input
+        done
+        echo "======================================="
+        if [[ $input == "yes" ]]; then
+                deploy $@
+        fi
+}
+
+deploy(){
+        echo -e $b">>Start to deploy mongo..."$e
+        #bosh -e $env -d $deployment_name deploy --vars-store=$varsStore $manifest
+        if [[ $? && $input == "yes" ]]; then
+                echo -e $b">>Checking status...."$e
+                #bosh -e $env -d $deployment_name vms
+        fi
+        echo -e $b">>Finished"$e
+}
+
+go $@
