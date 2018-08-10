@@ -1,7 +1,6 @@
 #!/bin/bash
 
-b="\033[31m"
-e="\033[0m"
+source ./var.ini
 
 # for testing
 uninstall(){
@@ -18,7 +17,7 @@ check(){
 		echo -e $b Please install yum-config-manager via sudo yum install -y yum-utils $e
 		while [[ $input != 'yes' && $input != 'no' ]];
 		do
-			echo -e $b Now to yum install -y yum-utils '?' $e
+			echo -e $b Now to install yum-utils '?' $e
 			read -p '[yes|no]': input
 		done
 		if [[ $input == 'yes' ]]; then
