@@ -1,5 +1,6 @@
 # fastOperation
 fast operation scripts
 
-1. ssh vm via bosh : [./go_vm \<deployment key\> \<VM Type key\>](https://github.com/easonlau02/fastOperation/tree/master/bosh)
-2. auto update git folder: [./git_folder_autoupdate \<git home\>](https://github.com/easonlau02/fastOperation/tree/master/git)
+1. ssh vm via bosh : [Usage](https://github.com/easonlau02/fastOperation/tree/master/bosh)
+2. Auto update git folder family: [Usage](https://github.com/easonlau02/fastOperation/tree/master/git)
+3. Auto install docker/docker-compose under centos: [Usage](https://github.com/easonlau02/fastOperation/tree/master/docker)
