@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source ./var.ini
+b="\033[31m"
+e="\033[0m"
 
 # for testing
 uninstall(){
@@ -30,7 +31,13 @@ check(){
 
 get_repo(){
 	repo='https://download.docker.com/linux/centos/docker-ce.repo'
-	repo_result=$(sudo yum-config-manager --add-repo $repo)
+	echo -e $b Download repo to your /etc/yum.repos.d/'?'
+	read -p '[yes|no]': download
+	if [[ $download == 'yes' ]]; then
+		repo_result=$(sudo yum-config-manager --add-repo $repo)
+	else
+		exit 0
+	fi
 	if [[ $repo_result ]]; then
 		echo -e $b Successful to add docker-ce repo into /etc/yum.repos.d/ $e
 	else
