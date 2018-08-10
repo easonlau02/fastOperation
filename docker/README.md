@@ -66,7 +66,7 @@ Nothing to do
 >>Passed verification
 
 ```
-2. Auto install latest docker-compose under centos, via './instlal_docker_compose_centos' (Need to run under root or account has sudo permission)
+2. Auto install latest docker-compose under centos, via `./instlal_docker_compose_centos` (Need to run under root or account has sudo permission)
 ```
 [root@kube ~]# ./install_docker_compose_centos 
 >>Start checking
