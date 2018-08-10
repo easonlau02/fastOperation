@@ -1,6 +1,7 @@
 ## Usage
-### Auto install latest docker-ce under ceontos, via `./install_docker_ce_centos`
+### Auto install latest docker-ce under ceontos, via `./install_docker_ce_centos` (Need to run under root account or account has sudo permission)
 ```
+[root@kube ~]# ./install_docker_ce_centos
 >>Start checking
  Please install yum-config-manager via sudo yum install -y yum-utils 
  Now to install yum-utils ? 
