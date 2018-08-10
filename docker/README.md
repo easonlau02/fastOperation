@@ -1,5 +1,5 @@
 ## Usage
-### Auto install latest docker-ce under ceontos, via `./install_docker_ce_centos` (Need to run under root account or account has sudo permission)
+### Auto install latest docker-ce under ceontos, via `./install_docker_ce_centos` (Need to run under root or account has sudo permission)
 ```
 [root@kube ~]# ./install_docker_ce_centos
 >>Start checking
@@ -65,4 +65,31 @@ Nothing to do
  Docker version 18.06.0-ce, build 0ffa825 
 >>Passed verification
 
+```
+### Auto install latest docker-compose under centos, via './instlal_docker_compose_centos' (Need to run under root or account has sudo permission)
+```
+[root@kube ~]# ./install_docker_compose_centos 
+>>Start checking
+ Please install crul via sudo yum install -y curl 
+ Now to install curl ? 
+[yes|no]:yes
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.163.com
+ * extras: mirrors.cn99.com
+ * updates: mirrors.cn99.com
+Package curl-7.29.0-46.el7.x86_64 already installed and latest version
+Nothing to do
+>>Pass checking
+>>Start installation
+ Ready to install latest docker-compose? 
+[yes|no]:yes
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   617    0   617    0     0    981      0 --:--:-- --:--:-- --:--:--   982
+100 11.2M  100 11.2M    0     0   421k      0  0:00:27  0:00:27 --:--:-- 1075k
+>>End installation
+>>Verify result
+ docker-compose version 1.22.0, build f46880fe 
+>>Passedi verifiation
 ```
