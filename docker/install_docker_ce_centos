@@ -1,0 +1,66 @@
+#!/bin/bash
+
+source ./var.ini
+
+# for testing
+uninstall(){
+	result=$(rpm -qa | grep yum-utils)
+	if [[ $result ]]; then
+		echo -e $b Uninstall yum-utils first! $e $result
+		sudo rpm -e $result
+	fi
+}
+
+check(){
+	result=$(command -v yum-config-manager 2>/dev/null || echo "No yum-config-manager")
+	if [[ $result == "No yum-config-manager" ]]; then
+		echo -e $b Please install yum-config-manager via sudo yum install -y yum-utils $e
+		while [[ $input != 'yes' && $input != 'no' ]];
+		do
+			echo -e $b Now to yum install -y yum-utils '?' $e
+			read -p '[yes|no]': input
+		done
+		if [[ $input == 'yes' ]]; then
+			yum install -y yum-utils
+		elif [[ $input == 'no' ]]; then
+			exit 0
+		fi
+	fi
+}
+
+get_repo(){
+	repo='https://download.docker.com/linux/centos/docker-ce.repo'
+	repo_result=$(sudo yum-config-manager --add-repo $repo)
+	if [[ $repo_result ]]; then
+		echo -e $b Successful to add docker-ce repo into /etc/yum.repos.d/ $e
+	else
+		echo -e $b Failed to add docker-ce repo, please check if your netowrk available! $e
+		exit 0
+	fi
+}
+
+install(){
+	while [[ $install != 'yes' && $install != 'no' ]]; 
+	do
+		echo -e $b If ready to install latest docker-ce'?'$e
+		read -p '[yes|no]': install
+	done
+	if [[ $install == 'yes' ]]; then
+		sudo yum install -y docker-ce
+	elif [[ $install == 'no' ]]; then
+		exit 0
+	fi
+}
+
+verify(){
+	testing=$(command -v docker)
+	if [[ $testing ]]; then
+		docker -v
+	fi
+}
+
+#uninstall
+check
+get_repo
+install
+verify
