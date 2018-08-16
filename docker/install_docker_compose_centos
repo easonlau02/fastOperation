@@ -47,7 +47,7 @@ verify(){
 		echo -e $b 'docker-compose not found!' $e
 		exit 0
 	fi
-	echo '>>Passedi verifiation'
+	echo '>>Passed verifiation'
 }
 
 check
