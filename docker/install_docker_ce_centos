@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Auto install latest docker-ce version
+# Running under root or account having sudo permission
+
+# Description: FastOperation script written by Eason Lau<eason.lau02@hotmail.com>
+# Date: 2018-08
+
 source ./var.ini
 
 # for testing
