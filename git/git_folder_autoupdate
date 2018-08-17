@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Auto update git family folder to latest by branch
+# Description: FastOperation script written by Eason Lau<eason.lau02@hotmail.com>
+# Date: 2018-08
+
 source ./var.ini
 git_home=$1
 
