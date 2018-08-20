@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Auto install latest docker-compose 1.22.0
+# Running under root or account having sudo permission
+
+# Description: FastOperation script written by Eason Lau<eason.lau02@hotmail.com>
+# Date: 2018-08
+
+source ./var.ini
+
+check(){
+	echo '>>Start checking'
+	result=$(command -v curl)
+	if [[ ! $result ]]; then
+		echo -e $b Please install crul via sudo yum install -y curl $e
+		while [[ $input != 'yes' && $input != 'no' ]];
+		do
+			echo -e $b Now to install curl '?' $e
+			read -p '[yes|no]': input
+		done
+		if [[ $input == 'yes' ]]; then
+			yum install -y curl
+		elif [[ $input == 'no' ]]; then
+			exit 0
+		fi	
+	fi
+	echo '>>Pass checking'
+}
+
+install(){
+	echo '>>Start installation'
+	echo -e $b Ready to install latest docker-compose'?' $e
+	while [[ $install != 'yes' && $install != 'no' ]];
+	do
+		read -p '[yes|no]': install
+	done
+	if [[ $install == 'yes' ]]; then
+		curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+		chmod +x /usr/local/bin/docker-compose
+	else
+		exit 0
+	fi
+	echo '>>End installation'
+}
+
+verify(){
+	echo '>>Verify result'
+	testing=$(command -v docker-compose)
+	if [[ $testing ]]; then
+		output=$(docker-compose -v)
+		echo -e $b $output $e
+	else
+		echo -e $b 'docker-compose not found!' $e
+		exit 0
+	fi
+	echo '>>Passed verifiation'
+}
+
+check
+install
+verify

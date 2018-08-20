@@ -1,0 +1,90 @@
+#!/bin/bash
+
+# Auto install latest docker-ce version
+# Running under root or account having sudo permission
+
+# Description: FastOperation script written by Eason Lau<eason.lau02@hotmail.com>
+# Date: 2018-08
+
+source ./var.ini
+
+# for testing
+uninstall(){
+	result=$(rpm -qa | grep yum-utils)
+	if [[ $result ]]; then
+		echo -e $b Uninstall yum-utils first! $e $result
+		sudo rpm -e $result
+	fi
+}
+
+check(){
+	echo '>>Start checking'
+	result=$(command -v yum-config-manager 2>/dev/null || echo "No yum-config-manager")
+	if [[ $result == "No yum-config-manager" ]]; then
+		echo -e $b Please install yum-config-manager via sudo yum install -y yum-utils $e
+		while [[ $input != 'yes' && $input != 'no' ]];
+		do
+			echo -e $b Now to install yum-utils '?' $e
+			read -p '[yes|no]': input
+		done
+		if [[ $input == 'yes' ]]; then
+			yum install -y yum-utils
+		elif [[ $input == 'no' ]]; then
+			exit 0
+		fi
+	fi
+	echo '>>Pass checking'
+}
+
+get_repo(){
+	echo '>>Download docker-ce repo'
+	repo='https://download.docker.com/linux/centos/docker-ce.repo'
+	echo -e $b Download repo to your /etc/yum.repos.d/'?'
+	read -p '[yes|no]': download
+	if [[ $download == 'yes' ]]; then
+		repo_result=$(sudo yum-config-manager --add-repo $repo)
+	else
+		exit 0
+	fi
+	if [[ $repo_result ]]; then
+		echo -e $b Successful to add docker-ce repo into /etc/yum.repos.d/ $e
+	else
+		echo -e $b Failed to add docker-ce repo, please check if your netowrk available! $e
+		exit 0
+	fi
+	echo '>>Done to download docker-ce repo'
+}
+
+install(){
+	echo '>>Start installation'
+	while [[ $install != 'yes' && $install != 'no' ]]; 
+	do
+		echo -e $b If ready to install latest docker-ce'?'$e
+		read -p '[yes|no]': install
+	done
+	if [[ $install == 'yes' ]]; then
+		sudo yum install -y docker-ce
+	elif [[ $install == 'no' ]]; then
+		exit 0
+	fi
+	echo '>>End installation'
+}
+
+verify(){
+	echo '>>Start verify'
+	testing=$(command -v docker)
+	if [[ $testing ]]; then
+		output=$(docker -v)
+		echo -e $b $output $e
+	else
+		echo -e $b 'docker not found!' $e
+		exit 0
+	fi
+	echo '>>Passed verification'
+}
+
+#uninstall
+check
+get_repo
+install
+verify
