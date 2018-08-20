@@ -1,5 +1,5 @@
 ## Usage
-### ./git_folder_autoupdate \<git home\>
+1. Auto update git folder family via `./git_folder_autoupdate <git home> `
 ```
 lauea:git lauea$ ./git_folder_autoupdate /home/lauea/github/
 ########### GIT  community-catalog  ##############
