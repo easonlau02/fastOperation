@@ -3,14 +3,16 @@
 ```
 [root@kube ~]# ./install_docker_ce_centos
 >>Start checking
- Please install yum-config-manager via sudo yum install -y yum-utils 
- Now to install yum-utils ? 
+ Please install yum-config-manager via sudo yum install -y yum-utils
+ Now to install yum-utils ?
 [yes|no]:yes
 Loaded plugins: fastestmirror
 Loading mirror speeds from cached hostfile
  * base: mirrors.163.com
- * extras: mirrors.cn99.com
- * updates: mirrors.cn99.com
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.aliyun.com
+docker-ce-stable                                                                                                                                                                                               | 2.9 kB  00:00:00
+updates/7/x86_64/primary_db                                                                                                                                                                                    | 5.0 MB  00:00:16
 Resolving Dependencies
 --> Running transaction check
 ---> Package yum-utils.noarch 0:1.1.31-46.el7_5 will be installed
@@ -18,30 +20,29 @@ Resolving Dependencies
 
 Dependencies Resolved
 
-==============================================================================================================================================================================================================================================
- Package                                                  Arch                                                  Version                                                          Repository                                              Size
-==============================================================================================================================================================================================================================================
+======================================================================================================================================================================================================================================
+ Package                                                Arch                                                Version                                                        Repository                                            Size
+======================================================================================================================================================================================================================================
 Installing:
- yum-utils                                                noarch                                                1.1.31-46.el7_5                                                  updates                                                120 k
+ yum-utils                                              noarch                                              1.1.31-46.el7_5                                                updates                                              120 k
 
 Transaction Summary
-==============================================================================================================================================================================================================================================
+======================================================================================================================================================================================================================================
 Install  1 Package
 
 Total download size: 120 k
 Installed size: 335 k
 Downloading packages:
-yum-utils-1.1.31-46.el7_5.noarch.rpm                                                                                                                                                                                   | 120 kB  00:00:00     
+yum-utils-1.1.31-46.el7_5.noarch.rpm                                                                                                                                                                           | 120 kB  00:00:01
 Running transaction check
 Running transaction test
 Transaction test succeeded
 Running transaction
-Warning: RPMDB altered outside of yum.
-  Installing : yum-utils-1.1.31-46.el7_5.noarch                                                                                                                                                                                           1/1 
-  Verifying  : yum-utils-1.1.31-46.el7_5.noarch                                                                                                                                                                                           1/1 
+  Installing : yum-utils-1.1.31-46.el7_5.noarch                                                                                                                                                                                   1/1
+  Verifying  : yum-utils-1.1.31-46.el7_5.noarch                                                                                                                                                                                   1/1
 
 Installed:
-  yum-utils.noarch 0:1.1.31-46.el7_5                                                                                                                                                                                                          
+  yum-utils.noarch 0:1.1.31-46.el7_5
 
 Complete!
 >>Pass checking
@@ -53,16 +54,46 @@ Complete!
 >>Start installation
  If ready to install latest docker-ce?
 [yes|no]:yes
-Loaded plugins: fastestmirror
 Loading mirror speeds from cached hostfile
  * base: mirrors.163.com
- * extras: mirrors.cn99.com
- * updates: mirrors.cn99.com
-Package docker-ce-18.06.0.ce-3.el7.x86_64 already installed and latest version
-Nothing to do
+ * extras: mirrors.aliyun.com
+ * updates: mirrors.aliyun.com
+Resolving Dependencies
+--> Running transaction check
+---> Package docker-ce.x86_64 0:18.06.0.ce-3.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+======================================================================================================================================================================================================================================
+ Package                                              Arch                                              Version                                                     Repository                                                   Size
+======================================================================================================================================================================================================================================
+Installing:
+ docker-ce                                            x86_64                                            18.06.0.ce-3.el7                                            docker-ce-stable                                             41 M
+
+Transaction Summary
+======================================================================================================================================================================================================================================
+Install  1 Package
+
+Total download size: 41 M
+Installed size: 168 M
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+docker-ce-18.06.0.ce-3.el7.x86_64.rpm                                                                                                                                                                          |  41 MB  00:00:19
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : docker-ce-18.06.0.ce-3.el7.x86_64                                                                                                                                                                                  1/1
+  Verifying  : docker-ce-18.06.0.ce-3.el7.x86_64                                                                                                                                                                                  1/1
+
+Installed:
+  docker-ce.x86_64 0:18.06.0.ce-3.el7
+
+Complete!
 >>End installation
 >>Start verify
- Docker version 18.06.0-ce, build 0ffa825 
+ Docker version 18.06.0-ce, build 0ffa825
 >>Passed verification
 
 ```
