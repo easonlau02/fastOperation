@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+sudo yum install -y telnet mlocate net-tools wget curl
