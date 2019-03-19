@@ -3,7 +3,7 @@ services:
   redis-node1:
     image: eason02/redis-instance:3.2
     container_name: redis-node1
-    command: redis-server /redis.conf --port 6379
+    command: redis-server /redis.conf --port 6379 --maxmemory-policy allkeys-lru
     #network_mode: host
     ports:
       - 6379:6379
@@ -13,7 +13,7 @@ services:
   redis-node2:
     image: eason02/redis-instance:3.2
     container_name: redis-node2
-    command: redis-server /redis.conf --port 6380
+    command: redis-server /redis.conf --port 6380 --maxmemory-policy allkeys-lru
     #network_mode: host
     ports:
       - 6380:6380
@@ -23,7 +23,7 @@ services:
   redis-node3:
     image: eason02/redis-instance:3.2
     container_name: redis-node3
-    command: redis-server /redis.conf --port 6381
+    command: redis-server /redis.conf --port 6381 --maxmemory-policy allkeys-lru
     #network_mode: host
     ports:
       - 6381:6381
@@ -33,7 +33,7 @@ services:
   redis-node4:
     image: eason02/redis-instance:3.2
     container_name: redis-node4
-    command: redis-server /redis.conf --port 6382
+    command: redis-server /redis.conf --port 6382 --maxmemory-policy allkeys-lru
     #network_mode: host
     ports:
       - 6382:6382
@@ -43,7 +43,7 @@ services:
   redis-node5:
     image: eason02/redis-instance:3.2
     container_name: redis-node5
-    command: redis-server /redis.conf --port 6383
+    command: redis-server /redis.conf --port 6383 --maxmemory-policy allkeys-lru
     #network_mode: host
     ports:
       - 6383:6383
@@ -53,7 +53,7 @@ services:
   redis-node6:
     image: eason02/redis-instance:3.2
     container_name: redis-node6
-    command: redis-server /redis.conf --port 6384
+    command: redis-server /redis.conf --port 6384 --maxmemory-policy allkeys-lru
     #network_mode: host
     ports:
       - 6384:6384
