@@ -9,4 +9,4 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - ./redis-instances/6379/data:/data
-    command: redis-server --port 6379 --appendonly yes
+    command: redis-server --port 6379 --appendonly yes --maxmemory-policy allkeys-lru
