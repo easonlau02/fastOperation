@@ -1,0 +1,12 @@
+version: '2'
+services:
+  redis-single:
+    image: redis:5.0.2
+    container_name: redis-single
+    ports:
+      - 6379:6379
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./redis-instances/6379/data:/data
+    command: redis-server --port 6379 --appendonly yes
