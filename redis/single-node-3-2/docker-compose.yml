@@ -3,7 +3,7 @@ services:
   redis-single-node:
     image: eason02/redis-instance:3.2
     container_name: redis-single-node
-    command: redis-server /redis.conf --port 6379 --cluster-enabled no
+    command: redis-server /redis.conf --port 6379 --cluster-enabled no --maxmemory-policy allkeys-lru
     #network_mode: host
     ports:
       - 6379:6379
