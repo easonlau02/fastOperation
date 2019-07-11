@@ -14,7 +14,6 @@ name=nginx mainline repo
 baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/
 gpgcheck=1
 enabled=0
-gpgkey=https://nginx.org/keys/nginx_signing.key
-' > /etc/yum.repos.d/nginx.repo
+gpgkey=https://nginx.org/keys/nginx_signing.key' > /etc/yum.repos.d/nginx.repo
 
 sudo yum install nginx
