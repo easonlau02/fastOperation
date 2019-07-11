@@ -2,8 +2,7 @@
 
 
 sudo yum install yum-utils
-sudo echo '
-[nginx-stable]
+sudo echo '[nginx-stable]
 name=nginx stable repo
 baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
 gpgcheck=1
